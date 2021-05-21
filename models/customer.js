@@ -44,6 +44,8 @@ module.exports = (sequelize, DataTypes) => {
   Customer.prototype.isValidPassword = function (password) { 
     var hash = crypto.pbkdf2Sync(password,  
     this.salt, 1000, 64, `sha512`).toString(`hex`); 
+    console.log('hash: ', hash)
+    console.log('hashfound: ', this.hash)
     return this.hash === hash; 
 }; 
 
